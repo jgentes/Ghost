@@ -216,14 +216,14 @@ Post = ghostBookshelf.Model.extend({
                     if (newTags.length === 0) {
                         return false;
                     }
-                    return _.any(newTags, function (newTag) {
+                    return _.some(newTags, function (newTag) {
                         return baseUtils.tagUpdate.tagsAreEqual(currentTag, newTag);
                     });
                 });
 
                 // Tags from the new tag array which don't exist in the DB should be created
                 tagsToCreate = _.pluck(_.reject(newTags, function (newTag) {
-                    return _.any(existingTags, function (existingTag) {
+                    return _.some(existingTags, function (existingTag) {
                         return baseUtils.tagUpdate.tagsAreEqual(existingTag, newTag);
                     });
                 }), 'name');

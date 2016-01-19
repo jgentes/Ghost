@@ -61,7 +61,7 @@ tagUpdate = {
             return false;
         }
         // Return if no item is not the same (double negative is horrible)
-        return !_.any(tags1, function (tag1, index) {
+        return !_.some(tags1, function (tag1, index) {
             return !tagUpdate.tagsAreEqual(tag1, tags2[index]);
         });
     }
